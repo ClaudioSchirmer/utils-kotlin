@@ -1,4 +1,4 @@
-package dev.cschirmer.utils.kotlin.extensions
+package br.dev.schirmer.utils.kotlin.extensions
 
 import java.text.Normalizer
 
