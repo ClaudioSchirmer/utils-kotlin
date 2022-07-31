@@ -1,4 +1,4 @@
-package dev.cschirmer.utils.kotlin.security
+package br.dev.schirmer.utils.kotlin.security
 
 import java.security.MessageDigest
 import java.security.SecureRandom

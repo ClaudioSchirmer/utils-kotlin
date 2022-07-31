@@ -1,4 +1,4 @@
-package dev.cschirmer.utils.kotlin.security
+package br.dev.schirmer.utils.kotlin.security
 
 
 fun String.encrypt(key: String): String = Cryptography(key).encrypt(this)

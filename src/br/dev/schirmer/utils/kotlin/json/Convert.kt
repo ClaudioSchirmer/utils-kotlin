@@ -1,4 +1,4 @@
-package dev.cschirmer.utils.kotlin.json
+package br.dev.schirmer.utils.kotlin.json
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 

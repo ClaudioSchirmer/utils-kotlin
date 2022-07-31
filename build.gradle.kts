@@ -9,7 +9,7 @@ val jacksonJavaTime: String by project
 
 plugins {
 	application
-	kotlin("jvm") version "1.6.0"
+	kotlin("jvm") version "1.7.0"
 	`maven-publish`
 	java
 }
@@ -37,7 +37,7 @@ java {
 	withSourcesJar()
 }
 
-group = "dev.cschirmer"
+group = "br.dev.schirmer"
 version = "1.0.0"
 
 sourceSets.main {
