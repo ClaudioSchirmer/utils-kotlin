@@ -2,6 +2,7 @@ package br.dev.schirmer.utils.kotlin.json
 
 import com.fasterxml.jackson.annotation.JsonFilter
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider
@@ -26,22 +27,18 @@ object JsonUtils {
 
     inline fun <reified TObject> TObject.toJson(
         writeNulls: Boolean = false,
-        excludeFields: Set<String>? = null
+        excludeFields: Set<String> = setOf()
     ): String {
         val jackson = jacksonObjectMapper()
             .registerKotlinModule()
             .registerModule(JavaTimeModule())
             .setDateFormat(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"))
-
-        if (excludeFields != null) {
-            jackson.addMixIn(TObject::class.java, PropertyFilterMixIn::class.java)
-            jackson.setFilterProvider(
+            .setFilterProvider(
                 SimpleFilterProvider().addFilter(
                     "custom_filters",
                     SimpleBeanPropertyFilter.serializeAllExcept(excludeFields)
                 )
             )
-        }
 
         if (!writeNulls) {
             jackson.setSerializationInclusion(JsonInclude.Include.NON_NULL)
@@ -50,6 +47,10 @@ object JsonUtils {
         return jackson.writeValueAsString(this)
     }
 
-    @JsonFilter("custom_filters")
-    class PropertyFilterMixIn
 }
+
+@JsonPropertyOrder(alphabetic = true)
+interface AlphabeticalSerialization
+
+@JsonFilter("custom_filters")
+interface FilteredSerialization
