@@ -1,6 +1,5 @@
 package br.dev.schirmer.utils.kotlin.json
 
-import br.dev.schirmer.utils.kotlin.json.JsonUtils.toJson
 import com.fasterxml.jackson.annotation.JsonFilter
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
