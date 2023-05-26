@@ -1,11 +1,9 @@
 package br.dev.schirmer.utils.kotlin.json
 
-import com.fasterxml.jackson.annotation.JsonFilter
 import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider
+import com.fasterxml.jackson.databind.MapperFeature
+import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
@@ -26,31 +24,31 @@ object JsonUtils {
     }
 
     inline fun <reified TObject> TObject.toJson(
-        writeNulls: Boolean = false,
-        excludeFields: Set<String> = setOf()
+        alphabeticalOrder: Boolean = true,
+        exportOptionsInclude: ExportOptionsInclude = ExportOptionsInclude.NON_EMPTY
     ): String {
-        val jackson = jacksonObjectMapper()
+        val jackson = JsonMapper
+            .builder()
+            .configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, alphabeticalOrder)
+            .build()
+
+        jackson
             .registerKotlinModule()
             .registerModule(JavaTimeModule())
             .setDateFormat(SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"))
-            .setFilterProvider(
-                SimpleFilterProvider().addFilter(
-                    "custom_filters",
-                    SimpleBeanPropertyFilter.serializeAllExcept(excludeFields)
-                )
-            )
 
-        if (!writeNulls) {
-            jackson.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        when (exportOptionsInclude) {
+            ExportOptionsInclude.NON_EMPTY -> jackson.setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
+            ExportOptionsInclude.NON_NULL -> jackson.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+            else -> {}
         }
 
         return jackson.writeValueAsString(this)
     }
 
+    enum class ExportOptionsInclude {
+        NON_EMPTY,
+        NON_NULL,
+        ALWAYS
+    }
 }
-
-@JsonPropertyOrder(alphabetic = true)
-interface AlphabeticalSerialization
-
-@JsonFilter("custom_filters")
-interface FilteredSerialization
