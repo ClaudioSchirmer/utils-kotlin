@@ -16,7 +16,7 @@ plugins {
 
 val compileOptions: (KotlinJvmOptions.() -> Unit) = {
 	jvmTarget = "11"
-	allWarningsAsErrors = true
+	allWarningsAsErrors = false
 }
 
 tasks.compileKotlin {
@@ -38,7 +38,7 @@ java {
 }
 
 group = "br.dev.schirmer"
-version = "3.0.0"
+version = "4.0.0"
 
 sourceSets.main {
 	java {
