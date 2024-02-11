@@ -1,4 +1,7 @@
-package br.dev.schirmer.utils.kotlin.security
+package br.dev.schirmer.utils.kotlin.security.string
+
+import br.dev.schirmer.utils.kotlin.security.Cryptography
+import br.dev.schirmer.utils.kotlin.security.CryptographyHash
 
 
 fun String.encrypt(key: String): String = Cryptography(key).encrypt(this)

@@ -1,25 +1,13 @@
-package br.dev.schirmer.utils.kotlin.json
+package br.dev.schirmer.utils.kotlin.json.clazz
 
+import br.dev.schirmer.utils.kotlin.json.ExportOptionsInclude
 import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import java.text.SimpleDateFormat
 
-inline fun <reified TObject : Any> String.toClass(): TObject {
-    return try {
-        jacksonObjectMapper()
-            .registerKotlinModule()
-            .registerModule(JavaTimeModule())
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .readValue(this, TObject::class.java)
-    } catch (e: Exception) {
-        throw Exception("Json cannot be converted to class.", e)
-    }
-}
 
 inline fun <reified TObject> TObject.toJson(
     alphabeticalOrder: Boolean = true,
