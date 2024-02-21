@@ -14,8 +14,8 @@ guard(condition: Boolean, onFailure: () -> Nothing)
 ## Extensions
 
 ### from Any
+#### Json
 ```kotlin
-// Json
 TObject.toJson<TObject>(
     alphabeticalOrder: Boolean = true,
     exportOptionsInclude: ExportOptionsInclude = ExportOptionsInclude.NON_EMPTY
