@@ -2,7 +2,8 @@
 utils-kotlin is a Kotlin library for fast kotlin development
 
 >Package: **br.dev.schirmer.utils.kotlin**<br/>
->Developer: **Claudio Schirmer Guedes**
+>Developer: **Claudio Schirmer Guedes**<br/>
+>Version: **6.1.0**
 
 ## Statements
 
