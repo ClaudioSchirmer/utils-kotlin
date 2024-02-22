@@ -99,7 +99,7 @@ publishing {
 			url = uri("https://maven.pkg.github.com/vlingo/xoom-common")
 			isAllowInsecureProtocol = true
 			credentials {
-				username = System.getenv("MAVEN_USERNAME")
+				username = "claudioschirmer@icloud.com"
 				password = System.getenv("MAVEN_PASSWORD")
 			}
 		}
