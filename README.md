@@ -16,7 +16,7 @@ guard(condition: Boolean, onFailure: () -> Nothing)
 ### from Any
 #### Json
 ```kotlin
-TObject.toJson<TObject>(
+toJson<TObject>(
     alphabeticalOrder: Boolean = true,
     exportOptionsInclude: ExportOptionsInclude = ExportOptionsInclude.NON_EMPTY
 ) : String
@@ -26,27 +26,27 @@ TObject.toJson<TObject>(
 
 #### Json
 ```kotlin
-String.toClass<TObject>(): TObject
+toClass<TObject>(): TObject
 ```
 
 #### Cryptography
 ```kotlin
-String.encrypt(key: String): String
+encrypt(key: String): String
 
-String.decrypt(key: String): String
+decrypt(key: String): String
 
-String.encryptURL(key: String): String
+encryptURL(key: String): String
 
-String.decryptURL(key: String): String
+decryptURL(key: String): String
 
-String.encryptHash(): String
+encryptHash(): String
 
-String.equalsHash(hash: String): Boolean
+equalsHash(hash: String): Boolean
 ```
 
 #### Transformations
 ```kotlin
-String.onlyDigits<TResult>(): TResult
+onlyDigits<TResult>(): TResult
 
-String.removeDiacritics(): String
+removeDiacritics(): String
 ```
