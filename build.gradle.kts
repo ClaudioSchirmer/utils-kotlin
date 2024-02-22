@@ -95,12 +95,12 @@ publishing {
 	}
 	repositories {
 		maven {
-			name = "nexus"
-			url = uri("$repositoryURL/repository/maven-releases/")
+			name = "GitHub"
+			url = uri("https://maven.pkg.github.com/vlingo/xoom-common")
 			isAllowInsecureProtocol = true
 			credentials {
-				username = repositoryUser
-				password = repositoryPassword
+				username = System.getenv("MAVEN_USERNAME")
+				password = System.getenv("MAVEN_PASSWORD")
 			}
 		}
 	}
