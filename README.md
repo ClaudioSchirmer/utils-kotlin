@@ -46,7 +46,7 @@ equalsHash(hash: String): Boolean
 
 #### Transformations
 ```kotlin
-onlyDigits<TResult>(): TResult
+onlyDigits<TResult>(): TResult where TResult: String, Int, Long, or Double
 
 removeDiacritics(): String
 ```
