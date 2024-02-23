@@ -30,4 +30,4 @@ jobs:
       run: ./gradlew publish
       env:
         MAVEN_USERNAME: ${{ github.actor }}
-        MAVEN_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        MAVEN_PASSWORD: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
