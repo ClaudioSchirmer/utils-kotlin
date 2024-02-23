@@ -92,7 +92,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHub"
-			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/${project.name}")
+			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/packages")
 			isAllowInsecureProtocol = true
 			credentials {
 				username = System.getenv("MAVEN_USERNAME")
