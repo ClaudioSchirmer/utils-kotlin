@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
+val repositoryURL: String by project
 val kotlinVersion: String by project
 val jacksonJavaTime: String by project
 
@@ -92,7 +93,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHub"
-			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/packages")
+			url = uri(repositoryURL)
 			isAllowInsecureProtocol = true
 			credentials {
 				username = System.getenv("MAVEN_USERNAME")
