@@ -1,9 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 
-val repositoryURL: String by project
-val repositoryUser: String by project
-val repositoryPassword: String by project
 val kotlinVersion: String by project
 val jacksonJavaTime: String by project
 
@@ -96,7 +92,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHub"
-			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/utils-kotlin")
+			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/${project.name}")
 			isAllowInsecureProtocol = true
 			credentials {
 				username = System.getenv("MAVEN_USERNAME")
