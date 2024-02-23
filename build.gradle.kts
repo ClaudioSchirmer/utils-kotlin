@@ -96,10 +96,10 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHub"
-			url = uri("https://maven.pkg.github.com/vlingo/xoom-common")
+			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/utils-kotlin")
 			isAllowInsecureProtocol = true
 			credentials {
-				username = "claudioschirmer@icloud.com"
+				username = System.getenv("MAVEN_USERNAME")
 				password = System.getenv("MAVEN_PASSWORD")
 			}
 		}
